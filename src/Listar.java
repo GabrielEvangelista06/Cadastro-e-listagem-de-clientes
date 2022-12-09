@@ -1,6 +1,7 @@
 
 public class Listar implements BancoDeDados {
 	public void listarCadastros() {
+		System.out.println("--------------------------------");
 
 		if (clientes.size() == 0 && clientesPF.size() == 0 && clientesPJ.size() == 0) {
 			System.out.println("\nNão existem cadastros de clientes !!!\n");

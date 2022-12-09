@@ -6,8 +6,12 @@ public class ClientePessoaFisica extends Cliente {
 		return cpf;
 	}
 
-	public void setCpf(String cpfCliente) {
-		this.cpf = cpfCliente;
+	public void setCpf(String cpf) throws Excecoes {
+		if (cpf.matches("(\\d{3})(\\d{3})(\\d{3})(\\d{2})|^\\d{3}\\.\\d{3}\\.\\d{3}\\-\\d{2}$")) {
+			this.cpf = cpf;
+		} else {
+			throw new Excecoes("CPF inválido, digite novamente");
+		}
 	}
 
 	@Override

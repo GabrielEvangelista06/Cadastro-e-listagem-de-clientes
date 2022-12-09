@@ -6,7 +6,7 @@ public class Cadastrar extends Listar implements BancoDeDados {
 	private Scanner in = new Scanner(System.in);
 	private boolean execute;
 
-	public Cadastrar() {
+	public Cadastrar() throws Excecoes {
 		execute = true;
 
 		System.out.println("BEM VINDO AO CADASTRO DE USUÁRIOS");
@@ -43,7 +43,7 @@ public class Cadastrar extends Listar implements BancoDeDados {
 		return in.nextLine();
 	}
 
-	public void cadastrar() {
+	public void cadastrar() throws Excecoes {
 		boolean cadastrando = true;
 
 		while (cadastrando) {
@@ -54,10 +54,46 @@ public class Cadastrar extends Listar implements BancoDeDados {
 
 			if (pfOuPj.equalsIgnoreCase("pf")) {
 				ClientePessoaFisica cliente = new ClientePessoaFisica();
-				cliente.setNome(input("Nome:"));
-				cliente.setCpf(input("CPF: "));
-				cliente.setEmail(input("E-mail:"));
-				cliente.setDataNasc(input("Data de nascimento:"));
+
+				boolean nomeInvalido = true;
+				while (nomeInvalido) {
+					try {
+						cliente.setNome(input("Nome:"));
+						nomeInvalido = false;
+					} catch (Excecoes e) {
+						e.printMessage();
+					}
+				}
+
+				boolean cpfInvalido = true;
+				while (cpfInvalido) {
+					try {
+						cliente.setCpf(input("CPF:"));
+						cpfInvalido = false;
+					} catch (Excecoes e) {
+						e.printMessage();
+					}
+				}
+
+				boolean emailInvalido = true;
+				while (emailInvalido) {
+					try {
+						cliente.setEmail(input("E-mail:"));
+						emailInvalido = false;
+					} catch (Excecoes e) {
+						e.printMessage();
+					}
+				}
+
+				boolean dataNascInvalida = true;
+				while (dataNascInvalida) {
+					try {
+						cliente.setDataNasc(input("Data de nascimento:"));
+						dataNascInvalida = false;
+					} catch (Excecoes e) {
+						e.printMessage();
+					}
+				}
 
 				String cadastrar = input("Confirmar cadastro (S/N) ?");
 
@@ -72,21 +108,59 @@ public class Cadastrar extends Listar implements BancoDeDados {
 				}
 			} else if (pfOuPj.equalsIgnoreCase("pj")) {
 				ClientePessoaJuridica cliente = new ClientePessoaJuridica();
-				cliente.setNome(input("Nome:"));
-				cliente.setCnpj(input("CNPJ:"));
-				cliente.setEmail(input("E-mail:"));
-				cliente.setDataNasc(input("Data de nascimento:"));
 
-				boolean paraCorno = true;
-				while (paraCorno) {
+				boolean nomeInvalido = true;
+				while (nomeInvalido) {
+					try {
+						cliente.setNome(input("Nome:"));
+						nomeInvalido = false;
+					} catch (Excecoes e) {
+						e.printMessage();
+					}
+				}
+
+				boolean cnpjInvalido = true;
+				while (cnpjInvalido) {
+					try {
+						cliente.setCnpj(input("CNPJ:"));
+						cnpjInvalido = false;
+					} catch (Excecoes e) {
+						e.printMessage();
+					}
+				}
+
+				boolean emailInvalido = true;
+				while (emailInvalido) {
+					try {
+						cliente.setEmail(input("E-mail:"));
+						emailInvalido = false;
+					} catch (Excecoes e) {
+						e.printMessage();
+					}
+				}
+
+				boolean dataNascInvalida = true;
+				while (dataNascInvalida) {
+					try {
+						cliente.setDataNasc(input("Data de nascimento:"));
+						dataNascInvalida = false;
+					} catch (Excecoes e) {
+						e.printMessage();
+					}
+				}
+
+				boolean test = true;
+				while (test) {
 					try {
 						System.out.println("Quantidade de filiais");
 						cliente.setQtdFiliais(input(in.nextInt()));
-						paraCorno = false;
+						test = false;
 						in.nextLine();
 					} catch (InputMismatchException e) {
 						System.out.println("Neste campo nós só aceitamos números");
 						in.nextLine();
+					} catch (Excecoes e) {
+						e.printMessage();
 					}
 				}
 
