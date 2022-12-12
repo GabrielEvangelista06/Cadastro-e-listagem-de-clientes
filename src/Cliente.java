@@ -1,16 +1,16 @@
 public abstract class Cliente implements BancoDeDados {
 
-	private String cnpj;
+	private String nome;
 	private String email;
 	private String dataNasc;
 
 	public String getNome() {
-		return cnpj;
+		return nome;
 	}
 
 	public void setNome(String nome) throws Excecoes {
 		if (nome.matches("^(([a-zA-Zà-ùÀ-Ù]+)(\\ )?){0,7}$") && nome.length() >= 3) {
-			this.cnpj = nome;
+			this.nome = nome;
 		} else {
 			throw new Excecoes("Nome inválido, digite novamente");
 		}
