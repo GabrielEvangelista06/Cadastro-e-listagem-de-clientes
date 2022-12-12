@@ -1,8 +1,6 @@
-import java.util.Scanner;
 
 public class Excecoes extends Exception {
-	private Scanner in = new Scanner(System.in);
-	
+
 	private String msg = "";
 
 	public Excecoes(String msg) {
